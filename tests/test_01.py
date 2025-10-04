@@ -1,4 +1,7 @@
-from src.automation.Adb import Adb
+import pytest
+from src.automation.AdbCommands import AdbCommands
 
 def test_01():
-    adb = Adb()
+    adbCommands = AdbCommands()
+    print(adbCommands.ls(pytest.MD_serial_number))
+    assert True

@@ -1,4 +1,4 @@
-from src.automation.Adb import Adb
+from src.adb.Adb import Adb
 
 class AdbCommands(Adb):
 

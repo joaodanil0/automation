@@ -1,5 +1,5 @@
 import pytest
-from src.automation.AdbCommands import AdbCommands
+from src.adb.AdbCommands import AdbCommands
 
 def test_01():
     adbCommands = AdbCommands()

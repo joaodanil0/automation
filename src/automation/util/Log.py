@@ -10,18 +10,14 @@ class Log:
 
     def __init__(self):
         self.file_handler = logging.FileHandler("logs.txt")
-        # self.file_handler.setLevel(pytest.LOG_LEVEL)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.file_handler.setFormatter(formatter)
-        # FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        # logging.basicConfig(
-        #     level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
-        # )
         self.rich_handler = RichHandler(
             show_time=True,
             show_level=True,
             show_path=False, # Or True, depending on your preference
-            rich_tracebacks=True
+            rich_tracebacks=True,
+            omit_repeated_times=False
         )
 
     

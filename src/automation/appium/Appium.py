@@ -1,4 +1,4 @@
-import unittest
+import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
@@ -14,7 +14,7 @@ options.set_capability("locale", "US")
 options.set_capability("platformVersion", "16")  # Versão do Android
 options.set_capability("noReset", True)
 
-appium_server_url = 'http://192.168.1.31:4723/wd/hub'
+appium_server_url = f"http://{pytest.APPIUM_SERVER_IP}:{pytest.APPIUM_SERVER_PORT}/wd/hub"
 
 class ExampleAppium():
 

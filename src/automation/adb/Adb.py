@@ -1,10 +1,13 @@
 import pytest
 import subprocess
 
+from src.automation.util.Log import Log
+
 class Adb:
 
     def __init__(self):
-        pass
+        log = Log()
+        self.logger = log.getLogger(__name__)
     
     def execCdm(self, command, serialNumber):
         try:
@@ -16,6 +19,6 @@ class Adb:
             )
             return result.stdout.strip()
         except subprocess.CalledProcessError as e:
-            print(f"Error executing ADB command: {e}")
-            print(f"Stderr: {e.stderr}")
+            self.logger.error(f"Error executing ADB command: {e}")
+            self.logger.error(f"Stderr: {e.stderr}")
             return None

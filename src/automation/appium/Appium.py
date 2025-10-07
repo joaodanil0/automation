@@ -2,6 +2,7 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
+from src.automation.util.Log import Log
 
 options = UiAutomator2Options()
 options.set_capability("platformName", "Android")
@@ -19,7 +20,13 @@ appium_server_url = f"http://{pytest.APPIUM_SERVER_IP}:{pytest.APPIUM_SERVER_POR
 class ExampleAppium():
 
     def setUp(self) -> None:
-        self.driver = webdriver.Remote(appium_server_url, options=options)
+        log = Log()
+        self.logger = log.getLogger(__name__)
+        try:
+            self.driver = webdriver.Remote(appium_server_url, options=options)
+        except Exception as e:
+            self.logger.error("Appium webdriver cannot connect!")
+            # self.logger.error(f"Stderr: {e.stderr}")
 
     def tearDown(self) -> None:
         if self.driver:

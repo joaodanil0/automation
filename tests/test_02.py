@@ -1,4 +1,4 @@
-from src.appium.Appium import ExampleAppium
+from src.automation.appium.Appium import ExampleAppium
 
 def test_02():
     
